@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"./limit"
+	"go_exams/limit"
 )
 
 const (
@@ -15,9 +15,9 @@ const (
 )
 
 func main() {
-	var numberTasks = [5]string{"13456755448", " 13419385751", "13419317885", " 13434343439", "13438522395"}
+	var numberTasks = [5]string{"1", "1", "1", " 1", "1"}
 
-	g := golimit.NewG(routineCountTotal)
+	g := limit.NewG(routineCountTotal)
 	wg := &sync.WaitGroup{}
 	client = &http.Client{}
 	beg := time.Now()
@@ -41,7 +41,7 @@ func main() {
 var client *http.Client
 
 func NumberQueryRequest(keyword string) (body []byte, err error) {
-	url := fmt.Sprintf("https://api.binstd.com/shouji/query?appkey=df2720f76a0991fa&shouji=%s", keyword)
+	url := fmt.Sprint("https://eyetracker-test.66nao.com/api/v1/system/user/randomImage/1629428467008")
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
